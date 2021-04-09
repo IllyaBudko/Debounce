@@ -39,7 +39,8 @@
 
 
 /**
-  * @brief  Updates button history periodically
+  * @brief  Updates button history periodically either in a polling loop
+  *         or in a timer interrupt
   * @param  uint32_t *button_history, pointer to variable where button history is stored
   * @retval None
   */
