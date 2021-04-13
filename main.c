@@ -121,7 +121,6 @@ int main(void)
  
         while (1)
         {
-          update_button(&button_history);
           if (is_button_pressed(&button_history))
           {
             press_count++;

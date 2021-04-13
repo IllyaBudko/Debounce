@@ -2,7 +2,7 @@
 #define _DEBOUNCE_H_
 
 #include <stdint.h>
-#include "stm32f4xx_hal.h"
+#include "stm32f0xx_hal.h"
 
 /**
   *Library implementation of button debounce based on 
@@ -44,7 +44,7 @@
   * @param  uint32_t *button_history, pointer to variable where button history is stored
   * @retval None
   */
-void update_button(uint32_t *button_history);
+void update_button(uint32_t *button_history, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
 
 /**
   * @brief  Checks upward position of button
@@ -86,7 +86,7 @@ uint8_t is_button_released(uint32_t *button_history);
   * @param  None
   * @retval 1(pin high state), 0(pin low state)
   */
-__weak uint8_t read_button(void);
+uint8_t read_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
 
 #endif /*_DEBOUNCE_H_*/
 

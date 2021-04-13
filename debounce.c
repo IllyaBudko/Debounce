@@ -1,9 +1,9 @@
 #include "debounce.h"
 
-void update_button(uint32_t *button_history)
+void update_button(uint32_t *button_history,GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
 {
   *button_history = *button_history << 1;
-  *button_history |= read_button();
+  *button_history |= read_button(GPIOx,GPIO_Pin);
 }
 
 uint8_t is_button_up(uint32_t *button_history)
@@ -38,8 +38,8 @@ uint8_t is_button_released(uint32_t *button_history)
   return released;
 }
 
-__weak uint8_t read_button(void)
+uint8_t read_button(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
 {
-  return (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_9));
+  return (HAL_GPIO_ReadPin(GPIOx, GPIO_Pin));
 }
 
